@@ -12,6 +12,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 700);
+        controller data = new controller();
         stage.setTitle("Pokemon Shodown");
         stage.setScene(scene);
         stage.show();

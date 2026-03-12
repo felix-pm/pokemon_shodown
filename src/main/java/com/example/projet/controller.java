@@ -5,7 +5,7 @@ import java.sql.*;
 public class controller {
 
     public controller(){
-        final String DB_URL = "jcdb://localhost:8889/Coda_POKEMON_SHODOWN";
+        final String DB_URL = "jdbc:mysql://localhost:8889/Coda_POKEMON_SHOWDOWN";
         final String USER = "root";
         final String PASS = "root";
 
