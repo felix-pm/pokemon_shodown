@@ -14,6 +14,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Pokemon Shodown");
         stage.setScene(scene);
+        Gameloop gameloop = new Gameloop();
         stage.show();
     }
 }

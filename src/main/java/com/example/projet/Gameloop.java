@@ -1,5 +1,5 @@
 package com.example.projet;
 
-public class Pokemon {
+public class Gameloop {
 
 }
