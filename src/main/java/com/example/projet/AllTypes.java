@@ -10,7 +10,7 @@ public class AllTypes {
     private Type fighting = new Type("fighting");
     private Type poison = new Type("poison");
     private Type ground = new Type("ground");
-    private Type flying = new Type("fying");
+    private Type flying = new Type("flying");
     private Type psychic = new Type("psychic");
     private Type bug = new Type("bug");
     private Type rock = new Type("rock");
