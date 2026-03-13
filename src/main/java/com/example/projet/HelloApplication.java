@@ -15,7 +15,8 @@ public class HelloApplication extends Application {
         controller data = new controller();
         stage.setTitle("Pokemon Shodown");
         stage.setScene(scene);
-        Gameloop gameloop = new Gameloop();
+        // Gameloop gameloop = new Gameloop();
+
         stage.show();
     }
 }
