@@ -7,7 +7,7 @@ public class Type {
     private String name;
     private HashMap<Type, Double> efficiencyOffensive;
 
-    public Type(String name, HashMap<Type, Double> efficiencyOffensive){
+    public Type(String name){
         this.name = name;
         this.efficiencyOffensive = new HashMap<>();
     }

@@ -1,5 +1,7 @@
 package com.example.projet;
 
+import java.util.ArrayList;
+
 public class Pokemon {
     private String name;
     private int hp;
@@ -8,11 +10,13 @@ public class Pokemon {
     private int defense;
     private int specialDefense;
     private int speed;
-    private String type1;
-    private String type2;
+    private Type type1;
+    private Type type2;
+    //private ArrayList<Attack> listAttack;
+    //private Object object;
     public Pokemon(String name, int hp, int attack, int specialAttack,
                    int defense, int specialDefense, int speed,
-                   String type1, String type2){
+                   Type type1, Type type2){
         this.name = name;
         this.hp = hp;
         this.attack = attack;
@@ -22,6 +26,8 @@ public class Pokemon {
         this.speed = speed;
         this.type1 = type1;
         this.type2 = type2;
+        //this.listAttack = new ArrayList<Attack>();
+        //this.object = new Object();
     }
 
     public String toString(){
@@ -35,4 +41,6 @@ public class Pokemon {
                 "Type 1: " + this.type1 + "\n" +
                 "Type 2: " + this.type2;
     }
+
+    public void ChooseAttack(){}
 }
