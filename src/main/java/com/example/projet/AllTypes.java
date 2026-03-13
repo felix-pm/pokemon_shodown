@@ -23,6 +23,37 @@ public class AllTypes {
     public AllTypes(){
         createEfficiency();
     }
+
+
+    public Type getType(String nomDuType) {
+        switch (nomDuType.toLowerCase()) {
+            case "normal": return this.normal;
+            case "fire": return this.fire;
+            case "water": return this.water;
+            case "grass": return this.grass;
+            case "electric": return this.electric;
+            case "ice": return this.ice;
+            case "fighting": return this.fighting;
+            case "poison": return this.poison;
+            case "ground": return this.ground;
+            case "flying": return this.flying;
+            case "psychic": return this.psychic;
+            case "bug": return this.bug;
+            case "rock": return this.rock;
+            case "ghost": return this.ghost;
+            case "dragon": return this.dragon;
+            case "dark": return this.dark;
+            case "steel": return this.steel;
+            case "fairy": return this.fairy;
+
+            default:
+                System.out.println("Erreur : Le type " + nomDuType + " n'existe pas !");
+                return null;
+        }
+    }
+
+
+
     //instantiation of types
 
     public void createEfficiency(){
