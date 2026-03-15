@@ -1,8 +1,11 @@
 package com.example.projet;
 
 
+import java.util.ArrayList;
+
 public class Pokemon {
     private String name;
+    private boolean isAlive;
     private int hp;
     private int attack;
     private int specialAttack;
@@ -11,12 +14,30 @@ public class Pokemon {
     private int speed;
     private Type type1;
     private Type type2;
-
     // On passe un statut en paramètre par default null et a chaque tour on vérifie si un effet s'est trigger et si oui
     // on utilise la methode applyEffect.
     private Effects statut;
-    //private ArrayList<Attack> listAttack;
+    private ArrayList<Attack> listAttack;
     //private Object object;
+    public Pokemon(String name, int hp, int attack, int specialAttack,
+                   int defense, int specialDefense, int speed,
+                   Type type1, Type type2, ArrayList<Attack> listAttack){
+        this.name = name;
+        this.isAlive = true;
+        this.hp = hp;
+        this.attack = attack;
+        this.specialAttack = specialAttack;
+        this.defense = defense;
+        this.specialDefense = specialDefense;
+        this.speed = speed;
+        this.type1 = type1;
+        this.type2 = type2;
+        this.listAttack = listAttack;
+        //this.object = new Object();
+        this.statut = null;
+
+    }
+
     public Pokemon(String name, int hp, int attack, int specialAttack,
                    int defense, int specialDefense, int speed,
                    Type type1, Type type2){
@@ -29,7 +50,7 @@ public class Pokemon {
         this.speed = speed;
         this.type1 = type1;
         this.type2 = type2;
-        //this.listAttack = new ArrayList<Attack>();
+        this.listAttack = new ArrayList<Attack>();
         //this.object = new Object();
         this.statut = null;
     }
@@ -44,6 +65,18 @@ public class Pokemon {
                 "Speed: " + this.speed + "\n" +
                 "Type 1: " + this.type1 + "\n" +
                 "Type 2: " + this.type2;
+    }
+
+    public void addAttack(Attack attack){
+        this.listAttack.add(attack);
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 
     public int getHp() {
@@ -116,6 +149,14 @@ public class Pokemon {
 
     public void setStatut(Effects statut){
         this.statut = statut;
+    }
+
+    public ArrayList<Attack> getListAttack() {
+        return listAttack;
+    }
+
+    public void setListAttack(ArrayList<Attack> listAttack) {
+        this.listAttack = listAttack;
     }
 
     public void ChooseAttack(){}

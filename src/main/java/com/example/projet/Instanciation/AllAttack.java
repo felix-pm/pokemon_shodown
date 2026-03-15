@@ -9,97 +9,223 @@ public class AllAttack {
     private AllTypes allTypes;
     private AllEffects allEffects;
 
-    private AttackSpecial tonnerre;
-    private AttackPhysical viveAttaque;
-    private AttackPhysical queueDeFer;
-    private AttackSpecial fatalFoudre;
-    private AttackSpecial lanceFlammes;
-    private AttackPhysical dracogriffe;
-    private AttackPhysical vol;
-    private AttackSpecial deflagration;
-    private AttackSpecial lanceSoleil;
-    private AttackSpecial bombeBeurk;
-    private AttackSpecial hydrocanon;
-    private AttackSpecial surf;
-    private AttackSpecial laserGlace;
-    private AttackPhysical tourRapide;
-    private AttackSpecial frappePsy;
-    private AttackSpecial ballOmbre;
-    private AttackSpecial aurasphere;
-    private AttackSpecial meteores;
-    private AttackPhysical morsure;
-    private AttackPhysical plaquage;
-    private AttackPhysical seisme;
-    private AttackPhysical machouille;
-    private AttackPhysical colere;
-    private AttackPhysical vitesseExtreme;
-    private AttackPhysical poingFeu;
-    private AttackPhysical damocles;
+    // --- ATTACK DECLARATIONS ---
+
+    // Pikachu
+    private Attack thunderbolt;
+    private Attack quickAttack;
+    private Attack voltTackle;
+    private Attack ironTail;
+
+    // Gengar (Ectoplasma)
+    private Attack shadowBall;
+    private Attack sludgeBomb; // Shared with Venusaur
+    private Attack lick;
+    private Attack dreamEater;
+
+    // Charizard (Dracaufeu)
+    private Attack flamethrower;
+    private Attack flareBlitz;
+    private Attack wingAttack;
+    private Attack fireBlast;
+
+    // Venusaur (Florizarre)
+    private Attack solarBeam;
+    private Attack doubleEdge; // Shared with Snorlax
+    private Attack razorLeaf;
+
+    // Blastoise (Tortank)
+    private Attack hydroPump;
+    private Attack bite;
+    private Attack waterGun;
+    private Attack takeDown;
+
+    // Alakazam
+    private Attack psychic;
+    private Attack psychoCut;
+    private Attack firePunch;
+    private Attack thunderPunch; // Shared with Lucario
+
+    // Machamp (Mackogneur)
+    private Attack crossChop;
+    private Attack submission;
+    private Attack poisonJab; // Shared with Garchomp
+    private Attack karateChop;
+
+    // Snorlax (Ronflex)
+    private Attack bodySlam;
+    private Attack earthquake; // Shared with Garchomp
+    private Attack hyperBeam;
+
+    // Garchomp (Carchacrok)
+    private Attack dragonClaw;
+    private Attack fireFang;
+
+    // Lucario
+    private Attack auraSphere;
+    private Attack closeCombat;
+    private Attack bulletPunch;
 
     public AllAttack(AllTypes types, AllEffects effects) {
         this.allTypes = types;
         this.allEffects = effects;
 
-        this.tonnerre = new AttackSpecial("Tonnerre", 90, allTypes.getType("electric"));
-        this.viveAttaque = new AttackPhysical("Vive-Attaque", 40, allTypes.getType("normal"));
-        this.queueDeFer = new AttackPhysical("Queue de Fer", 100, allTypes.getType("steel"));
-        this.fatalFoudre = new AttackSpecial("Fatal-Foudre", 110, allTypes.getType("electric"));
-        this.lanceFlammes = new AttackSpecial("Lance-Flammes", 90, allTypes.getType("fire"));
-        this.dracogriffe = new AttackPhysical("Dracogriffe", 80, allTypes.getType("dragon"));
-        this.vol = new AttackPhysical("Vol", 90, allTypes.getType("flying"));
-        this.deflagration = new AttackSpecial("Déflagration", 110, allTypes.getType("fire"));
-        this.lanceSoleil = new AttackSpecial("Lance-Soleil", 120, allTypes.getType("grass"));
-        this.bombeBeurk = new AttackSpecial("Bombe Beurk", 90, allTypes.getType("poison"));
-        this.hydrocanon = new AttackSpecial("Hydrocanon", 110, allTypes.getType("water"));
-        this.surf = new AttackSpecial("Surf", 90, allTypes.getType("water"));
-        this.laserGlace = new AttackSpecial("Laser Glace", 90, allTypes.getType("ice"));
-        this.tourRapide = new AttackPhysical("Tour Rapide", 50, allTypes.getType("normal"));
-        this.frappePsy = new AttackSpecial("Frappe Psy", 100, allTypes.getType("psychic"));
-        this.ballOmbre = new AttackSpecial("Ball'Ombre", 80, allTypes.getType("ghost"));
-        this.aurasphere = new AttackSpecial("Aurasphère", 80, allTypes.getType("fighting"));
-        this.meteores = new AttackSpecial("Météores", 60, allTypes.getType("normal"));
-        this.morsure = new AttackPhysical("Morsure", 60, allTypes.getType("dark"));
-        this.plaquage = new AttackPhysical("Plaquage", 85, allTypes.getType("normal"));
-        this.seisme = new AttackPhysical("Séisme", 100, allTypes.getType("ground"));
-        this.machouille = new AttackPhysical("Mâchouille", 80, allTypes.getType("dark"));
-        this.colere = new AttackPhysical("Colère", 120, allTypes.getType("dragon"));
-        this.vitesseExtreme = new AttackPhysical("Vitesse Extrême", 80, allTypes.getType("normal"));
-        this.poingFeu = new AttackPhysical("Poing Feu", 75, allTypes.getType("fire"));
-        this.damocles = new AttackPhysical("Damocles", 120, allTypes.getType("normal"),
+
+        // Pikachu
+        this.thunderbolt = new AttackSpecial("Thunderbolt",
+                90, allTypes.getType("electric"),
+                allEffects.getEffect("paralysis"));
+        this.quickAttack = new AttackPhysical("Quick Attack",
+                40, allTypes.getType("normal"), null);
+        this.voltTackle = new AttackPhysical("Volt Tackle",
+                120, allTypes.getType("electric"),
                 allEffects.getEffect("damocles"));
+        this.ironTail = new AttackPhysical("Iron Tail",
+                100, allTypes.getType("steel"),
+                null);
+
+        // Gengar
+        this.shadowBall = new AttackSpecial("Shadow Ball",
+                80, allTypes.getType("ghost"), null);
+        this.sludgeBomb = new AttackSpecial("Sludge Bomb",
+                90, allTypes.getType("poison"),
+                allEffects.getEffect("poison"));
+        this.lick = new AttackPhysical("Lick",
+                30, allTypes.getType("ghost"),
+                allEffects.getEffect("paralysis"));
+        this.dreamEater = new AttackSpecial("Dream Eater",
+                100, allTypes.getType("ghost"), null);
+
+        // Charizard
+        this.flamethrower = new AttackSpecial("Flamethrower",
+                90, allTypes.getType("fire"),
+                allEffects.getEffect("burn"));
+        this.flareBlitz = new AttackPhysical("Flare Blitz",
+                120, allTypes.getType("fire"),
+                allEffects.getEffect("damocles"));
+        this.wingAttack = new AttackPhysical("Wing Attack",
+                60, allTypes.getType("flying"), null);
+        this.fireBlast = new AttackSpecial("Fire Blast",
+                110, allTypes.getType("fire"),
+                allEffects.getEffect("burn"));
+
+        // Venusaur
+        this.solarBeam = new AttackSpecial("Solar Beam",
+                120, allTypes.getType("grass"), null);
+        this.doubleEdge = new AttackPhysical("Double-Edge",
+                120, allTypes.getType("normal"), allEffects.getEffect("damocles"));
+        this.razorLeaf = new AttackPhysical("Razor Leaf",
+                55, allTypes.getType("grass"), null);
+
+        // Blastoise
+        this.hydroPump = new AttackSpecial("Hydro Pump",
+                110, allTypes.getType("water"), null);
+        this.bite = new AttackPhysical("Bite", 60,
+                allTypes.getType("dark"), null);
+        this.waterGun = new AttackSpecial("Water Gun",
+                40, allTypes.getType("water"), null);
+        this.takeDown = new AttackPhysical("Take Down",
+                90, allTypes.getType("normal"),
+                allEffects.getEffect("damocles"));
+
+        // Alakazam
+        this.psychic = new AttackSpecial("Psychic",
+                90, allTypes.getType("psychic"), null);
+        this.psychoCut = new AttackPhysical("Psycho Cut",
+                70, allTypes.getType("psychic"), null);
+        this.firePunch = new AttackPhysical("Fire Punch",
+                75, allTypes.getType("fire"),
+                allEffects.getEffect("burn"));
+        this.thunderPunch = new AttackPhysical("Thunder Punch",
+                75, allTypes.getType("electric"),
+                allEffects.getEffect("paralysis"));
+
+        // Machamp
+        this.crossChop = new AttackPhysical("Cross Chop",
+                100, allTypes.getType("fighting"), null);
+        this.submission = new AttackPhysical("Submission",
+                80, allTypes.getType("fighting"),
+                allEffects.getEffect("damocles"));
+        this.poisonJab = new AttackPhysical("Poison Jab",
+                80, allTypes.getType("poison"),
+                allEffects.getEffect("poison"));
+        this.karateChop = new AttackPhysical("Karate Chop",
+                50, allTypes.getType("fighting"), null);
+
+        // Snorlax
+        this.bodySlam = new AttackPhysical("Body Slam",
+                85, allTypes.getType("normal"),
+                allEffects.getEffect("paralysis"));
+        this.earthquake = new AttackPhysical("Earthquake",
+                100, allTypes.getType("ground"), null);
+        this.hyperBeam = new AttackSpecial("Hyper Beam",
+                150, allTypes.getType("normal"), null);
+
+        // Garchomp
+        this.dragonClaw = new AttackPhysical("Dragon Claw",
+                80, allTypes.getType("dragon"), null);
+        this.fireFang = new AttackPhysical("Fire Fang",
+                65, allTypes.getType("fire"),
+                allEffects.getEffect("burn"));
+
+        // Lucario
+        this.auraSphere = new AttackSpecial("Aura Sphere",
+                80, allTypes.getType("fighting"), null);
+        this.closeCombat = new AttackPhysical("Close Combat",
+                120, allTypes.getType("fighting"), null);
+        this.bulletPunch = new AttackPhysical("Bullet Punch",
+                40, allTypes.getType("steel"), null);
     }
 
-    public Attack getAttack(String nomDeLattaque) {
-        switch (nomDeLattaque.toLowerCase()) {
-            case "tonnerre": return this.tonnerre;
-            case "vive-attaque": return this.viveAttaque;
-            case "queue de fer": return this.queueDeFer;
-            case "fatal-foudre": return this.fatalFoudre;
-            case "lance-flammes": return this.lanceFlammes;
-            case "dracogriffe": return this.dracogriffe;
-            case "vol": return this.vol;
-            case "déflagration": return this.deflagration;
-            case "lance-soleil": return this.lanceSoleil;
-            case "bombe beurk": return this.bombeBeurk;
-            case "hydrocanon": return this.hydrocanon;
-            case "surf": return this.surf;
-            case "laser glace": return this.laserGlace;
-            case "tour rapide": return this.tourRapide;
-            case "frappe psy": return this.frappePsy;
-            case "ball'ombre": return this.ballOmbre;
-            case "aurasphère": return this.aurasphere;
-            case "météores": return this.meteores;
-            case "morsure": return this.morsure;
-            case "plaquage": return this.plaquage;
-            case "séisme": return this.seisme;
-            case "mâchouille": return this.machouille;
-            case "colère": return this.colere;
-            case "vitesse extrême": return this.vitesseExtreme;
-            case "poing feu": return this.poingFeu;
-            case "damocles": return this.damocles;
+    public Attack getAttack(String attackName) {
+        switch (attackName.toLowerCase()) {
+            case "thunderbolt": return this.thunderbolt;
+            case "quick attack": return this.quickAttack;
+            case "volt tackle": return this.voltTackle;
+            case "iron tail": return this.ironTail;
+
+            case "shadow ball": return this.shadowBall;
+            case "sludge bomb": return this.sludgeBomb;
+            case "lick": return this.lick;
+            case "dream eater": return this.dreamEater;
+
+            case "flamethrower": return this.flamethrower;
+            case "flare blitz": return this.flareBlitz;
+            case "wing attack": return this.wingAttack;
+            case "fire blast": return this.fireBlast;
+
+            case "solar beam": return this.solarBeam;
+            case "double-edge": return this.doubleEdge;
+            case "razor leaf": return this.razorLeaf;
+
+            case "hydro pump": return this.hydroPump;
+            case "bite": return this.bite;
+            case "water gun": return this.waterGun;
+            case "take down": return this.takeDown;
+
+            case "psychic": return this.psychic;
+            case "psycho cut": return this.psychoCut;
+            case "fire punch": return this.firePunch;
+            case "thunder punch": return this.thunderPunch;
+
+            case "cross chop": return this.crossChop;
+            case "submission": return this.submission;
+            case "poison jab": return this.poisonJab;
+            case "karate chop": return this.karateChop;
+
+            case "body slam": return this.bodySlam;
+            case "earthquake": return this.earthquake;
+            case "hyper beam": return this.hyperBeam;
+
+            case "dragon claw": return this.dragonClaw;
+            case "fire fang": return this.fireFang;
+
+            case "aura sphere": return this.auraSphere;
+            case "close combat": return this.closeCombat;
+            case "bullet punch": return this.bulletPunch;
 
             default:
-                System.out.println("Erreur : L'attaque " + nomDeLattaque + " n'existe pas !");
+                System.out.println("Error: The attack '" + attackName + "' does not exist!");
                 return null;
         }
     }
