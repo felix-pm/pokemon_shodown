@@ -76,7 +76,7 @@ public class AllAttack {
                 90, allTypes.getType("electric"),
                 allEffects.getEffect("paralysis"));
         this.quickAttack = new AttackPhysical("Quick Attack",
-                40, allTypes.getType("normal"), null);
+                40, allTypes.getType("normal"));
         this.voltTackle = new AttackPhysical("Volt Tackle",
                 120, allTypes.getType("electric"),
                 allEffects.getEffect("damocles"));
@@ -86,7 +86,7 @@ public class AllAttack {
 
         // Gengar
         this.shadowBall = new AttackSpecial("Shadow Ball",
-                80, allTypes.getType("ghost"), null);
+                80, allTypes.getType("ghost"));
         this.sludgeBomb = new AttackSpecial("Sludge Bomb",
                 90, allTypes.getType("poison"),
                 allEffects.getEffect("poison"));
@@ -94,7 +94,7 @@ public class AllAttack {
                 30, allTypes.getType("ghost"),
                 allEffects.getEffect("paralysis"));
         this.dreamEater = new AttackSpecial("Dream Eater",
-                100, allTypes.getType("ghost"), null);
+                100, allTypes.getType("ghost"));
 
         // Charizard
         this.flamethrower = new AttackSpecial("Flamethrower",
@@ -104,35 +104,36 @@ public class AllAttack {
                 120, allTypes.getType("fire"),
                 allEffects.getEffect("damocles"));
         this.wingAttack = new AttackPhysical("Wing Attack",
-                60, allTypes.getType("flying"), null);
+                60, allTypes.getType("flying"));
         this.fireBlast = new AttackSpecial("Fire Blast",
                 110, allTypes.getType("fire"),
                 allEffects.getEffect("burn"));
 
         // Venusaur
         this.solarBeam = new AttackSpecial("Solar Beam",
-                120, allTypes.getType("grass"), null);
+                120, allTypes.getType("grass"));
         this.doubleEdge = new AttackPhysical("Double-Edge",
-                120, allTypes.getType("normal"), allEffects.getEffect("damocles"));
+                120, allTypes.getType("normal"),
+                allEffects.getEffect("damocles"));
         this.razorLeaf = new AttackPhysical("Razor Leaf",
-                55, allTypes.getType("grass"), null);
+                55, allTypes.getType("grass"));
 
         // Blastoise
         this.hydroPump = new AttackSpecial("Hydro Pump",
-                110, allTypes.getType("water"), null);
+                110, allTypes.getType("water"));
         this.bite = new AttackPhysical("Bite", 60,
-                allTypes.getType("dark"), null);
+                allTypes.getType("dark"));
         this.waterGun = new AttackSpecial("Water Gun",
-                40, allTypes.getType("water"), null);
+                40, allTypes.getType("water"));
         this.takeDown = new AttackPhysical("Take Down",
                 90, allTypes.getType("normal"),
                 allEffects.getEffect("damocles"));
 
         // Alakazam
         this.psychic = new AttackSpecial("Psychic",
-                90, allTypes.getType("psychic"), null);
+                90, allTypes.getType("psychic"));
         this.psychoCut = new AttackPhysical("Psycho Cut",
-                70, allTypes.getType("psychic"), null);
+                70, allTypes.getType("psychic"));
         this.firePunch = new AttackPhysical("Fire Punch",
                 75, allTypes.getType("fire"),
                 allEffects.getEffect("burn"));
@@ -142,7 +143,7 @@ public class AllAttack {
 
         // Machamp
         this.crossChop = new AttackPhysical("Cross Chop",
-                100, allTypes.getType("fighting"), null);
+                100, allTypes.getType("fighting"));
         this.submission = new AttackPhysical("Submission",
                 80, allTypes.getType("fighting"),
                 allEffects.getEffect("damocles"));
@@ -150,31 +151,31 @@ public class AllAttack {
                 80, allTypes.getType("poison"),
                 allEffects.getEffect("poison"));
         this.karateChop = new AttackPhysical("Karate Chop",
-                50, allTypes.getType("fighting"), null);
+                50, allTypes.getType("fighting"));
 
         // Snorlax
         this.bodySlam = new AttackPhysical("Body Slam",
                 85, allTypes.getType("normal"),
                 allEffects.getEffect("paralysis"));
         this.earthquake = new AttackPhysical("Earthquake",
-                100, allTypes.getType("ground"), null);
+                100, allTypes.getType("ground"));
         this.hyperBeam = new AttackSpecial("Hyper Beam",
-                150, allTypes.getType("normal"), null);
+                150, allTypes.getType("normal"));
 
         // Garchomp
         this.dragonClaw = new AttackPhysical("Dragon Claw",
-                80, allTypes.getType("dragon"), null);
+                80, allTypes.getType("dragon"));
         this.fireFang = new AttackPhysical("Fire Fang",
                 65, allTypes.getType("fire"),
                 allEffects.getEffect("burn"));
 
         // Lucario
         this.auraSphere = new AttackSpecial("Aura Sphere",
-                80, allTypes.getType("fighting"), null);
+                80, allTypes.getType("fighting"));
         this.closeCombat = new AttackPhysical("Close Combat",
-                120, allTypes.getType("fighting"), null);
+                120, allTypes.getType("fighting"));
         this.bulletPunch = new AttackPhysical("Bullet Punch",
-                40, allTypes.getType("steel"), null);
+                40, allTypes.getType("steel"));
     }
 
     public Attack getAttack(String attackName) {
