@@ -84,7 +84,13 @@ public class Pokemon {
     }
 
     public void setHp(int hp) {
-        this.hp = hp;
+        if(hp < 0){
+            System.out.println("Pokemon ko");
+            this.hp = 0;
+            this.isAlive = false;
+        } else {
+            this.hp = hp;
+        }
     }
 
     public int getAttack() {
@@ -160,4 +166,12 @@ public class Pokemon {
     }
 
     public void ChooseAttack(){}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -18,6 +18,7 @@ public class Poison extends Effects {
             target.setStatut(this);
             int newHp = (int) (target.getHp() - target.getHp()/8);
             target.setHp(newHp);
+            System.out.println("Le pokemon est maintenant empoisonné !");
         }
     }
 }

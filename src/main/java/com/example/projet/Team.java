@@ -13,7 +13,14 @@ public class Team {
     }
 
     public void addInTeam(Pokemon pokemon){
-        this.pokemonTeam[this.pokemonTeam.length] = pokemon;
+        for (int i = 0; i < this.pokemonTeam.length; i++) {
+            if (this.pokemonTeam[i] == null) {
+                this.pokemonTeam[i] = pokemon;
+                System.out.println("Pokemon ajouté avec succès !");
+                return;
+            }
+        }
+        System.out.println("L'équipe est déjà pleine !");
     }
 
     public boolean teamAlive(){
@@ -39,4 +46,13 @@ public class Team {
         this.pokemonTeam = pokemonTeam;
     }
 
+    public String printTeam(){
+        String presentation = "";
+        for(int i = 0; i < this.pokemonTeam.length; i++){
+            if (this.pokemonTeam[i] != null) {
+                presentation += this.pokemonTeam[i].toString() + "\n\n";
+            }
+        }
+        return presentation;
+    }
 }

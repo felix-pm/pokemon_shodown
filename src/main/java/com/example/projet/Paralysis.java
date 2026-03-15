@@ -15,6 +15,7 @@ public class Paralysis extends Effects {
 
         if(target.getStatut() == null){
             target.setStatut(this);
+            System.out.println("Le " + target.getName() + " est maintenant paralysé !");
         }
     }
 }

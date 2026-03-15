@@ -27,5 +27,5 @@ public abstract class Attack {
         }
     }
 
-    public abstract int attacking(Pokemon attacker, Pokemon target);
+    public abstract void attacking(Pokemon attacker, Pokemon target);
 }

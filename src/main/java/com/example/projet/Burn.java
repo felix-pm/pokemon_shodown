@@ -17,6 +17,7 @@ public class Burn extends Effects {
             target.setStatut(this);
             int newHp = (int) (target.getHp() - target.getHp()/16);
             target.setHp(newHp);
+            System.out.println("Le pokemon est maintenant brulé !");
         }
     }
 
