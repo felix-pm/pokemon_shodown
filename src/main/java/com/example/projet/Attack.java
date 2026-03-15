@@ -21,6 +21,7 @@ public abstract class Attack {
         this.effect = null;
     }
 
+    // Function that check if the pokemon already have an effect
     public void checkEffect(Pokemon attacker, Pokemon target, int damage){
         if(this.effect != null){
             this.effect.applyEffect(attacker, target, damage);

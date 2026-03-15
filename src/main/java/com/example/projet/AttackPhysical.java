@@ -10,6 +10,7 @@ public class AttackPhysical extends Attack{
         super(name, power, type);
     }
 
+    // Function that calculate and substract the hp of the target by the damage's attack of the attacker
     @Override
     public void attacking(Pokemon attacker, Pokemon target) {
         double min = 0.85;
@@ -20,12 +21,16 @@ public class AttackPhysical extends Attack{
         if (target.getType2() != null) {
             efficiency *= this.type.getMultCounter(target.getType2());
         }
+
         double damage = (this.power * ((double) attacker.getAttack() / target.getDefense()) * efficiency * variation);
 
         checkEffect(attacker, target, (int) (damage) );
+
         int finalDamage = (damage < 1 && efficiency > 0) ? 1 : (int) damage;
+
         System.out.println("Le " + attacker.getName()  + " a mis " + finalDamage +
                 " dégât au " + target.getName() +" adverse !");
+
         int newHp = target.getHp() - finalDamage;
         target.setHp(newHp);
     }

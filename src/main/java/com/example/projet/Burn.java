@@ -8,6 +8,7 @@ public class Burn extends Effects {
     }
 
     @Override
+    // Function that check if the pokemon was affect by a statut or apply it and decrease his hp
     public void applyEffect(Pokemon attacker, Pokemon target, int amountDamage) {
 
         if(target.getStatut() != null){
