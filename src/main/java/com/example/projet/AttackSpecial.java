@@ -2,16 +2,28 @@ package com.example.projet;
 
 public class AttackSpecial extends Attack{
 
-    public AttackSpecial(String name, int puissance, Type type, Effect effect) {
-        super(name, puissance, type, effect);
+    public AttackSpecial(String name, int power, Type type, Effects effect) {
+        super(name, power, type, effect);
     }
 
-    public AttackSpecial(String name, int puissance, Type type) {
-        super(name, puissance, type);
+    public AttackSpecial(String name, int power, Type type) {
+        super(name, power, type);
     }
 
     @Override
-    public void attacking() {
+    public int attacking(Pokemon attacker, Pokemon target) {
+        double min = 0.85;
+        double max = 1.0;
+        double variation = min + (Math.random() * (max - min));
 
+        double efficiency = this.type.getMultCounter(target.getType1());
+        if (target.getType2() != null) {
+            efficiency *= this.type.getMultCounter(target.getType2());
+        }
+        double damage = (this.power * ((double) attacker.getSpecialAttack() / target.getSpecialDefense()) * efficiency * variation);
+
+        checkEffect(attacker, target, (int) (damage) );
+
+        return (damage < 1 && efficiency > 0) ? 1 : (int) damage;
     }
 }

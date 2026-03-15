@@ -1,6 +1,5 @@
 package com.example.projet;
 
-import java.util.ArrayList;
 
 public class Pokemon {
     private String name;
@@ -12,6 +11,10 @@ public class Pokemon {
     private int speed;
     private Type type1;
     private Type type2;
+
+    // On passe un statut en paramètre par default null et a chaque tour on vérifie si un effet s'est trigger et si oui
+    // on utilise la methode applyEffect.
+    private Effects statut;
     //private ArrayList<Attack> listAttack;
     //private Object object;
     public Pokemon(String name, int hp, int attack, int specialAttack,
@@ -28,6 +31,7 @@ public class Pokemon {
         this.type2 = type2;
         //this.listAttack = new ArrayList<Attack>();
         //this.object = new Object();
+        this.statut = null;
     }
 
     public String toString(){
@@ -40,6 +44,78 @@ public class Pokemon {
                 "Speed: " + this.speed + "\n" +
                 "Type 1: " + this.type1 + "\n" +
                 "Type 2: " + this.type2;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
+
+    public void setSpecialAttack(int specialAttack) {
+        this.specialAttack = specialAttack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getSpecialDefense() {
+        return specialDefense;
+    }
+
+    public void setSpecialDefense(int specialDefense) {
+        this.specialDefense = specialDefense;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public Type getType1() {
+        return type1;
+    }
+
+    public void setType1(Type type1) {
+        this.type1 = type1;
+    }
+
+    public Type getType2() {
+        return type2;
+    }
+
+    public void setType2(Type type2) {
+        this.type2 = type2;
+    }
+
+    public Effects getStatut(){
+        return this.statut;
+    }
+
+    public void setStatut(Effects statut){
+        this.statut = statut;
     }
 
     public void ChooseAttack(){}

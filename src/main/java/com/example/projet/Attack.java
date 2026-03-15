@@ -3,22 +3,29 @@ package com.example.projet;
 public abstract class Attack {
 
     private String name;
-    private int puissance;
-    private Type type;
-    private Effect effect;
+    protected int power;
+    protected Type type;
+    protected Effects effect;
 
-    public Attack(String name, int puissance, Type type, Effect effect){
+    public Attack(String name, int power, Type type, Effects effect){
         this.name = name;
-        this.puissance = puissance;
+        this.power = power;
         this.type = type;
         this.effect = effect;
     }
 
-    public Attack(String name, int puissance, Type type){
+    public Attack(String name, int power, Type type){
         this.name = name;
-        this.puissance = puissance;
+        this.power = power;
         this.type = type;
+        this.effect = null;
     }
 
-    public abstract void attacking();
+    public void checkEffect(Pokemon attacker, Pokemon target, int damage){
+        if(this.effect != null){
+            this.effect.applyEffect(attacker, target, damage);
+        }
+    }
+
+    public abstract int attacking(Pokemon attacker, Pokemon target);
 }

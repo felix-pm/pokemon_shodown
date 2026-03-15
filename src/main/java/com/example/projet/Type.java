@@ -16,7 +16,7 @@ public class Type {
         this.efficiencyOffensive.put(target, multiplicateur);
     }
 
-    public Double getMultiplicateurContre(Type target){
+    public Double getMultCounter(Type target){
         if (this.efficiencyOffensive.get(target) == null){
             return 1.0;
         } else {

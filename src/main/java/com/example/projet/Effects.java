@@ -1,8 +1,24 @@
 package com.example.projet;
 
-public class Effects {
+import java.util.Random;
 
-    public Effects(){
+public abstract class Effects {
+    private String name;
+    private int chanceActivation;
 
+    public Effects(int chanceActivation) {
+        this.chanceActivation = chanceActivation;
     }
+
+    public int getChanceActivation() {
+        return chanceActivation;
+    }
+
+    public boolean isTriggered() {
+        Random rand = new Random();
+        int tirage = rand.nextInt(100) + 1;
+        return tirage <= chanceActivation;
+    }
+
+    public abstract void applyEffect(Pokemon attacker, Pokemon cible, int amountDamage);
 }

@@ -1,4 +1,6 @@
-package com.example.projet;
+package com.example.projet.Instanciation;
+
+import com.example.projet.Type;
 
 public class AllTypes {
     private Type normal = new Type("normal");
@@ -52,9 +54,6 @@ public class AllTypes {
         }
     }
 
-
-
-    //instantiation of types
 
     public void createEfficiency(){
         // --- NORMAL ---
