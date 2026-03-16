@@ -55,4 +55,14 @@ public class Team {
         }
         return presentation;
     }
+
+    public int getSize() {
+        int count = 0;
+        for (int i = 0; i < this.pokemonTeam.length; i++) {
+            if (this.pokemonTeam[i] != null) {
+                count++;
+            }
+        }
+        return count;
+    }
 }

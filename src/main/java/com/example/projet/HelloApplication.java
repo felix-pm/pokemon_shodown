@@ -14,24 +14,14 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        //Scene scene = new Scene(fxmlLoader.load(), 700, 700);
-        //controller data = new controller();
-        //stage.setTitle("Pokemon Shodown");
-        //stage.setScene(scene);
-
         AllTypes allTypes = new AllTypes();
         AllEffects allEffects = new AllEffects();
-
-        // 2. Instanciation des attaques (nécessite les Types et les Effets)
         AllAttack allAttacks = new AllAttack(allTypes, allEffects);
-
-        // 3. Instanciation du catalogue de Pokémons (nécessite les Types et les Attaques)
         AllPokemons allPokemons = new AllPokemons(allTypes, allAttacks);
-
-        // 4. Instanciation de la Gameloop (nécessite le catalogue de Pokémons)
-        Gameloop gameloop = new Gameloop(allPokemons);
-
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setTitle("Pokémon Showdown");
+        stage.setScene(scene);
         stage.show();
     }
 }
