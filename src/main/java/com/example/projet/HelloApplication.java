@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
         AllPokemons allPokemons = new AllPokemons(allTypes, allAttacks);
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Pokémon Showdown");
+        stage.setTitle("Pokémon Showdown - launcher");
         stage.setScene(scene);
         stage.show();
     }

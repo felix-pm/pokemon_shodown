@@ -26,7 +26,7 @@ public class CreateTeamController {
     private ObservableList<String> teamString = FXCollections.observableArrayList();
 
     private AllPokemons cataloguePokemons;
-    private Team realTeam;
+    private static Team realTeam;
 
     @FXML
     public void initialize() {
@@ -81,6 +81,7 @@ public class CreateTeamController {
             stage.setTitle("Pokémon Showdown - gameplay");
             stage.setScene(scene);
             stage.show();
+            System.out.println("Equipe enregistré");
         } else {
             System.out.println("Pas assez de pokemon dans l'équipe");
         }
