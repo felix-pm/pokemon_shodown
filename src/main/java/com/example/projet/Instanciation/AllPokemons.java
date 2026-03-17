@@ -5,9 +5,8 @@ import com.example.projet.Pokemon;
 public class AllPokemons {
 
     private AllTypes allTypes;
-    private AllAttack allAttack; // On importe le catalogue d'attaques
+    private AllAttack allAttack;
 
-    // Déclaration des Pokémons
     private Pokemon pikachu;
     private Pokemon ectoplasma;
     private Pokemon dracaufeu;
@@ -23,98 +22,97 @@ public class AllPokemons {
         this.allTypes = types;
         this.allAttack = attacks;
 
-        // --- 1. PIKACHU ---
-        this.pikachu = new Pokemon("Pikachu", 35, 55,
+        // --- 1. PIKACHU (HP: 35 -> 175) ---
+        this.pikachu = new Pokemon("Pikachu", 175, 55,
                 50, 40, 50, 90,
                 allTypes.getType("electric"), null);
-        this.pikachu.addAttack(allAttack.getAttack("thunderbolt"));
-        this.pikachu.addAttack(allAttack.getAttack("quick attack"));
-        this.pikachu.addAttack(allAttack.getAttack("volt tackle"));
-        this.pikachu.addAttack(allAttack.getAttack("iron tail"));
+        this.pikachu.addPossibleAttack(allAttack.getAttack("thunderbolt"));
+        this.pikachu.addPossibleAttack(allAttack.getAttack("quick attack"));
+        this.pikachu.addPossibleAttack(allAttack.getAttack("volt tackle"));
+        this.pikachu.addPossibleAttack(allAttack.getAttack("iron tail"));
 
-        // --- 2. ECTOPLASMA (Gengar) ---
-        this.ectoplasma = new Pokemon("Ectoplasma", 60, 65,
+        // --- 2. ECTOPLASMA (HP: 60 -> 300) ---
+        this.ectoplasma = new Pokemon("Ectoplasma", 300, 65,
                 130, 60, 75, 110,
                 allTypes.getType("ghost"), allTypes.getType("poison"));
-        this.ectoplasma.addAttack(allAttack.getAttack("shadow ball"));
-        this.ectoplasma.addAttack(allAttack.getAttack("sludge bomb"));
-        this.ectoplasma.addAttack(allAttack.getAttack("lick"));
-        this.ectoplasma.addAttack(allAttack.getAttack("dream eater"));
+        this.ectoplasma.addPossibleAttack(allAttack.getAttack("shadow ball"));
+        this.ectoplasma.addPossibleAttack(allAttack.getAttack("sludge bomb"));
+        this.ectoplasma.addPossibleAttack(allAttack.getAttack("lick"));
+        this.ectoplasma.addPossibleAttack(allAttack.getAttack("dream eater"));
 
-        // --- 3. DRACAUFEU (Charizard) ---
-        this.dracaufeu = new Pokemon("Dracaufeu", 78, 84,
+        // --- 3. DRACAUFEU (HP: 78 -> 390) ---
+        this.dracaufeu = new Pokemon("Dracaufeu", 390, 84,
                 109, 78, 85, 100,
                 allTypes.getType("fire"), allTypes.getType("flying"));
-        this.dracaufeu.addAttack(allAttack.getAttack("flamethrower"));
-        this.dracaufeu.addAttack(allAttack.getAttack("flare blitz"));
-        this.dracaufeu.addAttack(allAttack.getAttack("wing attack"));
-        this.dracaufeu.addAttack(allAttack.getAttack("fire blast"));
+        this.dracaufeu.addPossibleAttack(allAttack.getAttack("flamethrower"));
+        this.dracaufeu.addPossibleAttack(allAttack.getAttack("flare blitz"));
+        this.dracaufeu.addPossibleAttack(allAttack.getAttack("wing attack"));
+        this.dracaufeu.addPossibleAttack(allAttack.getAttack("fire blast"));
 
-        // --- 4. FLORIZARRE (Venusaur) ---
-        this.florizarre = new Pokemon("Florizarre", 80, 82,
+        // --- 4. FLORIZARRE (HP: 80 -> 400) ---
+        this.florizarre = new Pokemon("Florizarre", 400, 82,
                 100, 83, 100, 80,
                 allTypes.getType("grass"), allTypes.getType("poison"));
-        this.florizarre.addAttack(allAttack.getAttack("solar beam"));
-        this.florizarre.addAttack(allAttack.getAttack("double-edge")); // Partagée avec Ronflex
-        this.florizarre.addAttack(allAttack.getAttack("razor leaf"));
-        this.florizarre.addAttack(allAttack.getAttack("sludge bomb")); // Partagée avec Ectoplasma
+        this.florizarre.addPossibleAttack(allAttack.getAttack("solar beam"));
+        this.florizarre.addPossibleAttack(allAttack.getAttack("double-edge"));
+        this.florizarre.addPossibleAttack(allAttack.getAttack("razor leaf"));
+        this.florizarre.addPossibleAttack(allAttack.getAttack("sludge bomb"));
 
-        // --- 5. TORTANK (Blastoise) ---
-        this.tortank = new Pokemon("Tortank", 79, 83,
+        // --- 5. TORTANK (HP: 79 -> 395) ---
+        this.tortank = new Pokemon("Tortank", 395, 83,
                 85, 100, 105, 78,
                 allTypes.getType("water"), null);
-        this.tortank.addAttack(allAttack.getAttack("hydro pump"));
-        this.tortank.addAttack(allAttack.getAttack("bite"));
-        this.tortank.addAttack(allAttack.getAttack("water gun"));
-        this.tortank.addAttack(allAttack.getAttack("take down"));
+        this.tortank.addPossibleAttack(allAttack.getAttack("hydro pump"));
+        this.tortank.addPossibleAttack(allAttack.getAttack("bite"));
+        this.tortank.addPossibleAttack(allAttack.getAttack("water gun"));
+        this.tortank.addPossibleAttack(allAttack.getAttack("take down"));
 
-        // --- 6. ALAKAZAM ---
-        this.alakazam = new Pokemon("Alakazam", 55, 50,
+        // --- 6. ALAKAZAM (HP: 55 -> 275) ---
+        this.alakazam = new Pokemon("Alakazam", 275, 50,
                 135, 45, 95, 120,
                 allTypes.getType("psychic"), null);
-        this.alakazam.addAttack(allAttack.getAttack("psychic"));
-        this.alakazam.addAttack(allAttack.getAttack("psycho cut"));
-        this.alakazam.addAttack(allAttack.getAttack("fire punch"));
-        this.alakazam.addAttack(allAttack.getAttack("thunder punch")); // Partagée avec Lucario
+        this.alakazam.addPossibleAttack(allAttack.getAttack("psychic"));
+        this.alakazam.addPossibleAttack(allAttack.getAttack("psycho cut"));
+        this.alakazam.addPossibleAttack(allAttack.getAttack("fire punch"));
+        this.alakazam.addPossibleAttack(allAttack.getAttack("thunder punch"));
 
-        // --- 7. MACKOGNEUR (Machamp) ---
-        this.mackogneur = new Pokemon("Mackogneur", 90, 130,
+        // --- 7. MACKOGNEUR (HP: 90 -> 450) ---
+        this.mackogneur = new Pokemon("Mackogneur", 450, 130,
                 65, 80, 85, 55,
                 allTypes.getType("fighting"), null);
-        this.mackogneur.addAttack(allAttack.getAttack("cross chop"));
-        this.mackogneur.addAttack(allAttack.getAttack("submission"));
-        this.mackogneur.addAttack(allAttack.getAttack("poison jab")); // Partagée avec Carchacrok
-        this.mackogneur.addAttack(allAttack.getAttack("karate chop"));
+        this.mackogneur.addPossibleAttack(allAttack.getAttack("cross chop"));
+        this.mackogneur.addPossibleAttack(allAttack.getAttack("submission"));
+        this.mackogneur.addPossibleAttack(allAttack.getAttack("poison jab"));
+        this.mackogneur.addPossibleAttack(allAttack.getAttack("karate chop"));
 
-        // --- 8. RONFLEX (Snorlax) ---
-        this.ronflex = new Pokemon("Ronflex", 160, 110,
+        // --- 8. RONFLEX (HP: 160 -> 800) ---
+        this.ronflex = new Pokemon("Ronflex", 800, 110,
                 65, 65, 110, 30,
                 allTypes.getType("normal"), null);
-        this.ronflex.addAttack(allAttack.getAttack("body slam"));
-        this.ronflex.addAttack(allAttack.getAttack("earthquake")); // Partagée avec Carchacrok
-        this.ronflex.addAttack(allAttack.getAttack("hyper beam"));
-        this.ronflex.addAttack(allAttack.getAttack("double-edge")); // Partagée avec Florizarre
+        this.ronflex.addPossibleAttack(allAttack.getAttack("body slam"));
+        this.ronflex.addPossibleAttack(allAttack.getAttack("earthquake"));
+        this.ronflex.addPossibleAttack(allAttack.getAttack("hyper beam"));
+        this.ronflex.addPossibleAttack(allAttack.getAttack("double-edge"));
 
-        // --- 9. CARCHACROK (Garchomp) ---
-        this.carchacrok = new Pokemon("Carchacrok", 108, 130,
+        // --- 9. CARCHACROK (HP: 108 -> 540) ---
+        this.carchacrok = new Pokemon("Carchacrok", 540, 130,
                 80, 95, 85, 102,
                 allTypes.getType("dragon"), allTypes.getType("ground"));
-        this.carchacrok.addAttack(allAttack.getAttack("dragon claw"));
-        this.carchacrok.addAttack(allAttack.getAttack("fire fang"));
-        this.carchacrok.addAttack(allAttack.getAttack("earthquake")); // Partagée avec Ronflex
-        this.carchacrok.addAttack(allAttack.getAttack("poison jab")); // Partagée avec Mackogneur
+        this.carchacrok.addPossibleAttack(allAttack.getAttack("dragon claw"));
+        this.carchacrok.addPossibleAttack(allAttack.getAttack("fire fang"));
+        this.carchacrok.addPossibleAttack(allAttack.getAttack("earthquake"));
+        this.carchacrok.addPossibleAttack(allAttack.getAttack("poison jab"));
 
-        // --- 10. LUCARIO ---
-        this.lucario = new Pokemon("Lucario", 70, 110,
+        // --- 10. LUCARIO (HP: 70 -> 350) ---
+        this.lucario = new Pokemon("Lucario", 350, 110,
                 115, 70, 70, 90,
                 allTypes.getType("fighting"), allTypes.getType("steel"));
-        this.lucario.addAttack(allAttack.getAttack("aura sphere"));
-        this.lucario.addAttack(allAttack.getAttack("close combat"));
-        this.lucario.addAttack(allAttack.getAttack("bullet punch"));
-        this.lucario.addAttack(allAttack.getAttack("thunder punch")); // Partagée avec Alakazam
+        this.lucario.addPossibleAttack(allAttack.getAttack("aura sphere"));
+        this.lucario.addPossibleAttack(allAttack.getAttack("close combat"));
+        this.lucario.addPossibleAttack(allAttack.getAttack("bullet punch"));
+        this.lucario.addPossibleAttack(allAttack.getAttack("thunder punch"));
     }
 
-    // Getter global basé sur le nom
     public Pokemon getPokemon(String nomDuPokemon) {
         switch (nomDuPokemon.toLowerCase()) {
             case "pikachu": return this.pikachu;

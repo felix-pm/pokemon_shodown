@@ -29,4 +29,8 @@ public abstract class Attack {
     }
 
     public abstract void attacking(Pokemon attacker, Pokemon target);
+
+    public String getName() {
+        return name;
+    }
 }

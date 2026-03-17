@@ -17,6 +17,7 @@ public class Pokemon {
     // On passe un statut en paramètre par default null et a chaque tour on vérifie si un effet s'est trigger et si oui
     // on utilise la methode applyEffect.
     private Effects statut;
+    private ArrayList<Attack> possibleAttacks;
     private ArrayList<Attack> listAttack;
     private boolean actif;
     //private Object object;
@@ -35,6 +36,7 @@ public class Pokemon {
         this.type2 = type2;
         this.listAttack = listAttack;
         //this.object = new Object();
+        this.possibleAttacks = new ArrayList<>();
         this.statut = null;
         this.actif = false;
     }
@@ -43,6 +45,7 @@ public class Pokemon {
                    int defense, int specialDefense, int speed,
                    Type type1, Type type2){
         this.name = name;
+        this.isAlive = true;
         this.hp = hp;
         this.attack = attack;
         this.specialAttack = specialAttack;
@@ -53,8 +56,29 @@ public class Pokemon {
         this.type2 = type2;
         this.listAttack = new ArrayList<Attack>();
         //this.object = new Object();
+        this.possibleAttacks = new ArrayList<>();
         this.statut = null;
         this.actif = false;
+    }
+
+    public void addPossibleAttack(Attack attack) {
+        this.possibleAttacks.add(attack);
+    }
+
+    public ArrayList<Attack> getPossibleAttacks() {
+        return possibleAttacks;
+    }
+
+    public void setPossibleAttacks(ArrayList<Attack> possibleAttacks) {
+        this.possibleAttacks = possibleAttacks;
+    }
+
+    public Pokemon copy() {
+        Pokemon p = new Pokemon(this.name, this.hp, this.attack, this.specialAttack,
+                this.defense, this.specialDefense, this.speed,
+                this.type1, this.type2);
+        p.setPossibleAttacks(new ArrayList<>(this.possibleAttacks)); // Copie les attaques possibles
+        return p;
     }
 
     public String toString(){
