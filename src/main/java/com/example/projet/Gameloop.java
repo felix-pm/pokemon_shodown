@@ -36,5 +36,11 @@ public class Gameloop {
         System.out.println(pokemon2.toString());
     }
 
+    public void launchLoop(){
+
+        if(team1.teamAlive() == false || team2.teamAlive() == false){
+            // arrêt de jeu
+        }
+    }
 
 }

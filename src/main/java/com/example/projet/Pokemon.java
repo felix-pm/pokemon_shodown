@@ -18,6 +18,7 @@ public class Pokemon {
     // on utilise la methode applyEffect.
     private Effects statut;
     private ArrayList<Attack> listAttack;
+    private boolean actif;
     //private Object object;
     public Pokemon(String name, int hp, int attack, int specialAttack,
                    int defense, int specialDefense, int speed,
@@ -35,7 +36,7 @@ public class Pokemon {
         this.listAttack = listAttack;
         //this.object = new Object();
         this.statut = null;
-
+        this.actif = false;
     }
 
     public Pokemon(String name, int hp, int attack, int specialAttack,
@@ -53,6 +54,7 @@ public class Pokemon {
         this.listAttack = new ArrayList<Attack>();
         //this.object = new Object();
         this.statut = null;
+        this.actif = false;
     }
 
     public String toString(){
@@ -90,6 +92,14 @@ public class Pokemon {
             this.isAlive = false;
         } else {
             this.hp = hp;
+        }
+    }
+
+    public Pokemon checkSpeed(Pokemon enemy){
+        if(this.speed > enemy.getSpeed()){
+            return this;
+        } else {
+            return enemy;
         }
     }
 
@@ -173,5 +183,13 @@ public class Pokemon {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+
+    public void setActif(boolean actif) {
+        this.actif = actif;
     }
 }
