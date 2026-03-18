@@ -69,6 +69,24 @@
                 <Button text="⬆ Retirer l'attaque" onAction="#onRemoveAttack" maxWidth="Infinity" style="-fx-background-color: #95A5A6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 6;"/>
             </VBox>
 
+            <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #C0C8CF; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                <Label text="Objet à tenir" style="-fx-text-fill: #333333;">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
+                <ListView fx:id="availableItemsList" prefHeight="135.0" prefWidth="220.0" style="-fx-border-color: #E0E0E0;"/>
+                <Button text="🎁 Attacher l'objet" onAction="#onAttachItem" maxWidth="Infinity" style="-fx-background-color: #9B59B6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 6;"/>
+
+                <Region prefHeight="15.0"/>
+                <Label text="Objet Actuel" style="-fx-text-fill: #333333;">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="equippedItemLabel" text="Aucun" style="-fx-background-color: #F4F6F6; -fx-padding: 10; -fx-border-color: #E0E0E0;" maxWidth="Infinity" alignment="CENTER"/>
+            </VBox>
+
         </HBox>
     </center>
 

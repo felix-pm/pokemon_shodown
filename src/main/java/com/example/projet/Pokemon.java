@@ -14,13 +14,12 @@ public class Pokemon {
     private int speed;
     private Type type1;
     private Type type2;
-    // On passe un statut en paramètre par default null et a chaque tour on vérifie si un effet s'est trigger et si oui
-    // on utilise la methode applyEffect.
     private Effects statut;
     private ArrayList<Attack> possibleAttacks;
     private ArrayList<Attack> listAttack;
     private boolean actif;
-    //private Object object;
+    private Item heldItem;
+    private int maxHp;
     public Pokemon(String name, int hp, int attack, int specialAttack,
                    int defense, int specialDefense, int speed,
                    Type type1, Type type2, ArrayList<Attack> listAttack){
@@ -39,6 +38,7 @@ public class Pokemon {
         this.possibleAttacks = new ArrayList<>();
         this.statut = null;
         this.actif = false;
+        this.maxHp = hp;
     }
 
     public Pokemon(String name, int hp, int attack, int specialAttack,
@@ -74,10 +74,12 @@ public class Pokemon {
     }
 
     public Pokemon copy() {
-        Pokemon p = new Pokemon(this.name, this.hp, this.attack, this.specialAttack,
-                this.defense, this.specialDefense, this.speed,
-                this.type1, this.type2);
-        p.setPossibleAttacks(new ArrayList<>(this.possibleAttacks)); // Copie les attaques possibles
+        Pokemon p = new Pokemon(this.getName(), this.getHp(), this.getAttack(),
+                this.getSpecialAttack(), this.getDefense(),
+                this.getSpecialDefense(), this.getSpeed(),
+                this.getType1(), this.getType2());
+        p.setPossibleAttacks(new ArrayList<>(this.getPossibleAttacks()));
+        p.setHeldItem(this.heldItem);
         return p;
     }
 
@@ -215,5 +217,17 @@ public class Pokemon {
 
     public void setActif(boolean actif) {
         this.actif = actif;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setHeldItem(Item item) {
+        this.heldItem = item;
+    }
+
+    public Item getHeldItem() {
+        return heldItem;
     }
 }

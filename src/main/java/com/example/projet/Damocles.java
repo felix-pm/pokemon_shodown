@@ -1,10 +1,9 @@
 package com.example.projet;
 
 public class Damocles extends Effects {
-    private String nomStatut;
     public Damocles(int chanceActivation) {
         super(chanceActivation);
-        this.nomStatut = "Damocles";
+        this.setName("Damocles");
     }
 
     @Override
@@ -14,4 +13,8 @@ public class Damocles extends Effects {
         System.out.println("Le pokemon qui à attaqué a subi un contre coup !");
     }
 
+    @Override
+    public String applyEndOfTurn(Pokemon target) {
+        return "";
+    }
 }

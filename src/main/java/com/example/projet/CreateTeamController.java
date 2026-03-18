@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
@@ -27,6 +28,8 @@ public class CreateTeamController {
     private ListView<String> possibleAttacksList;
     @FXML
     private ListView<String> equippedAttacksList;
+    @FXML private ListView<String> availableItemsList;
+    @FXML private Label equippedItemLabel;
 
     // Listes observables pour l'interface
     private ObservableList<String> teamString = FXCollections.observableArrayList();
@@ -50,6 +53,17 @@ public class CreateTeamController {
                 "Pikachu", "Ectoplasma", "Dracaufeu", "Florizarre", "Tortank",
                 "Alakazam", "Mackogneur", "Ronflex", "Carchacrok", "Lucario"
         );
+
+        ObservableList<String> items = FXCollections.observableArrayList(
+                "Restes", "Lunettes Noires", "Baie Oran", "Ballon"
+        );
+
+        teamPokemonsList.getSelectionModel().selectedIndexProperty().addListener((obs, oldVal, newVal) -> {
+            updateAttacksViews(newVal.intValue());
+            updateItemView(newVal.intValue()); // Nouvelle méthode
+        });
+
+        availableItemsList.setItems(items);
         availablePokemonsList.setItems(availablePokemons);
         teamPokemonsList.setItems(teamString);
         possibleAttacksList.setItems(possibleAttacksString);
@@ -176,6 +190,37 @@ public class CreateTeamController {
             System.out.println("Equipe enregistrée");
         } else {
             System.out.println("Pas assez de Pokémon dans l'équipe (Minimum 3, Maximum 6)");
+        }
+    }
+
+    private void updateItemView(int pokemonIndex) {
+        if (pokemonIndex >= 0 && pokemonIndex < currentTeamList.size()) {
+            Pokemon selected = currentTeamList.get(pokemonIndex);
+            if (selected.getHeldItem() != null) {
+                equippedItemLabel.setText(selected.getHeldItem().getName());
+            } else {
+                equippedItemLabel.setText("Aucun");
+            }
+        }
+    }
+
+    @FXML
+    protected void onAttachItem(ActionEvent event) {
+        int pIndex = teamPokemonsList.getSelectionModel().getSelectedIndex();
+        String selectedItemName = availableItemsList.getSelectionModel().getSelectedItem();
+
+        if (pIndex >= 0 && selectedItemName != null) {
+            Pokemon p = currentTeamList.get(pIndex);
+
+            // Instanciation de l'objet selon le choix
+            switch (selectedItemName) {
+                case "Restes": p.setHeldItem(new Leftovers()); break;
+                case "Lunettes Noires": p.setHeldItem(new BlackGlasses()); break;
+                case "Baie Oran": p.setHeldItem(new OranBerry()); break;
+                case "Ballon": p.setHeldItem(new AirBalloon()); break;
+            }
+            updateItemView(pIndex);
+            System.out.println(selectedItemName + " attaché à " + p.getName());
         }
     }
 }

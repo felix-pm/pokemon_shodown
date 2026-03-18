@@ -3,11 +3,10 @@ package com.example.projet;
 import java.util.Random;
 
 public class Paralysis extends Effects {
-    private String nomStatut;
 
     public Paralysis(int chanceActivation) {
         super(chanceActivation);
-        this.nomStatut = "Paralysis";
+        this.setName("Paralysis");
     }
 
     @Override
@@ -17,5 +16,10 @@ public class Paralysis extends Effects {
             target.setStatut(this);
             System.out.println("Le " + target.getName() + " est maintenant paralysé !");
         }
+    }
+
+    @Override
+    public String applyEndOfTurn(Pokemon target) {
+        return "";
     }
 }

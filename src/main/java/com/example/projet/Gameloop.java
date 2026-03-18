@@ -14,8 +14,8 @@ public class Gameloop {
     public Gameloop(Team playerTeam, AllPokemons catalogue) {
         this.playerTeam = playerTeam;
         this.enemyTeam = createEnemyTeam(catalogue);
-        this.activePlayerPokemon = getFirstAlive(this.playerTeam);
-        this.activeEnemyPokemon = getFirstAlive(this.enemyTeam);
+        this.activePlayerPokemon = playerTeam.getFirstAlive();
+        this.activeEnemyPokemon = enemyTeam.getFirstAlive();
         this.currentTurn = 1;
         this.isGameOver = false;
     }
@@ -36,13 +36,6 @@ public class Gameloop {
         return team;
     }
 
-    public Pokemon getFirstAlive(Team team) {
-        for (Pokemon p : team.getPokemonTeam()) {
-            if (p != null && p.getIsAlive() && p.getHp() > 0) return p;
-        }
-        return null;
-    }
-
     public Attack getRandomEnemyAttack() {
         Random rand = new Random();
         return activeEnemyPokemon.getListAttack().get(rand.nextInt(activeEnemyPokemon.getListAttack().size()));
@@ -56,7 +49,7 @@ public class Gameloop {
         int oldHp = target.getHp();
         String log = attacker.getName() + " utilise " + attack.getName() + " !\n";
 
-        attack.attacking(attacker, target); // Applique les dégâts (géré dans Attack)
+        attack.attacking(attacker, target);
 
         int damage = oldHp - target.getHp();
         log += target.getName() + " perd " + Math.max(0, damage) + " HP.\n";
@@ -66,8 +59,8 @@ public class Gameloop {
     public String checkEnemyFaint() {
         if (!activeEnemyPokemon.getIsAlive() || activeEnemyPokemon.getHp() <= 0) {
             String log = activeEnemyPokemon.getName() + " adverse est KO !\n";
-            activeEnemyPokemon = getFirstAlive(enemyTeam);
-            if (activeEnemyPokemon != null) {
+            if (enemyTeam.teamAlive()) {
+                activeEnemyPokemon = enemyTeam.getFirstAlive();
                 log += "L'adversaire envoie " + activeEnemyPokemon.getName() + " !\n";
             } else {
                 log += "\n⚔️ VICTOIRE ! L'équipe adverse est vaincue !\n";
@@ -81,7 +74,7 @@ public class Gameloop {
     public String checkPlayerFaint() {
         if (!activePlayerPokemon.getIsAlive() || activePlayerPokemon.getHp() <= 0) {
             String log = activePlayerPokemon.getName() + " est KO ! Choisissez un nouveau Pokémon.\n";
-            if (getFirstAlive(playerTeam) == null) {
+            if (!playerTeam.teamAlive()) {
                 log += "\n💀 DÉFAITE ! Vous n'avez plus de Pokémon en état de se battre !\n";
                 isGameOver = true;
             }
@@ -90,10 +83,49 @@ public class Gameloop {
         return "";
     }
 
-    public void endTurn() {
-        if (!isGameOver && getFirstAlive(playerTeam) != null && getFirstAlive(enemyTeam) != null) {
+    public String endTurn() {
+        StringBuilder statusLog = new StringBuilder();
+
+        if (!isGameOver && playerTeam.getFirstAlive() != null && enemyTeam.getFirstAlive() != null) {
+
+            if (activePlayerPokemon.getStatut() != null) {
+                String logEffect = activePlayerPokemon.getStatut().applyEndOfTurn(activePlayerPokemon);
+                if (!logEffect.isEmpty()) {
+                    statusLog.append(logEffect).append("\n");
+                }
+            }
+
+            if (activePlayerPokemon.getHeldItem() != null && activePlayerPokemon.getIsAlive()) {
+                statusLog.append(activePlayerPokemon.getHeldItem().use(activePlayerPokemon)).append("\n");
+            }
+
+            if (activeEnemyPokemon.getStatut() != null && activeEnemyPokemon.getHp() > 0) {
+                String logEffect = activeEnemyPokemon.getStatut().applyEndOfTurn(activeEnemyPokemon);
+                if (!logEffect.isEmpty()) {
+                    statusLog.append(logEffect).append("\n");
+                }
+            }
+
+            if (activeEnemyPokemon.getHeldItem() != null && activeEnemyPokemon.getIsAlive()) {
+                statusLog.append(activeEnemyPokemon.getHeldItem().use(activeEnemyPokemon)).append("\n");
+            }
+
             currentTurn++;
         }
+        return statusLog.toString();
+    }
+
+    public String useItemTurn(Item item, Pokemon target) {
+        String log = "Vous utilisez " + item.getName() + " sur " + target.getName() + " !\n";
+        log += item.use(target) + "\n";
+
+        if (activeEnemyPokemon.getIsAlive() && activeEnemyPokemon.getHp() > 0) {
+            Attack enemyAttack = getRandomEnemyAttack();
+            log += "\n" + performAttack(activeEnemyPokemon, activePlayerPokemon, enemyAttack);
+            log += checkPlayerFaint();
+        }
+
+        return log;
     }
 
     // --- Getters et Setters ---

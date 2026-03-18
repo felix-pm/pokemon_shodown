@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ComboBox?>
 
 <BorderPane prefHeight="650.0" prefWidth="950.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projet.gameplayController">
 
@@ -29,7 +30,10 @@
                                 <font><Font name="System Bold" size="18.0" /></font>
                             </Label>
                             <ProgressBar fx:id="enemyHpBar" prefWidth="230.0" progress="1.0" style="-fx-accent: #2ECC71;" />
-                            <Label fx:id="enemyHpLabel" text="HP: 100/100" />
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label fx:id="enemyHpLabel" text="HP: 100/100" />
+                                <Label fx:id="enemyStatusLabel" text="" visible="false" />
+                            </HBox>
                         </VBox>
                     </left>
 
@@ -49,7 +53,10 @@
                             <font><Font name="System Bold" size="18.0" /></font>
                         </Label>
                         <ProgressBar fx:id="playerHpBar" prefWidth="230.0" progress="1.0" style="-fx-accent: #2ECC71;" />
-                        <Label fx:id="playerHpLabel" text="HP: 100/100" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <Label fx:id="playerHpLabel" text="HP: 100/100" />
+                            <Label fx:id="playerStatusLabel" text="" visible="false" />
+                        </HBox>
                     </VBox>
                 </HBox>
             </bottom>
@@ -82,7 +89,7 @@
                 </GridPane>
             </VBox>
 
-            <VBox spacing="5.0">
+            <VBox spacing="10.0">
                 <Label text="Équipe (Changer de Pokémon)" textFill="WHITE">
                     <font><Font name="System Bold" size="14.0" /></font>
                 </Label>
@@ -105,6 +112,13 @@
                         <Button fx:id="switchBtn6" maxWidth="Infinity" maxHeight="Infinity" onAction="#onSwitch6" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     </children>
                 </GridPane>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <ComboBox fx:id="inventoryCombo" prefWidth="200.0" promptText="Ouvrir le sac d'objets..." />
+                        <Button fx:id="useItemBtn" mnemonicParsing="false" onAction="#onUseItem" text="Utiliser" style="-fx-background-color: #F39C12; -fx-text-fill: white; -fx-font-weight: bold;" />
+                    </children>
+                </HBox>
             </VBox>
 
             <TextArea fx:id="battleLog" editable="false" prefWidth="320.0" style="-fx-font-family: 'Consolas'; -fx-font-size: 13px;" wrapText="true" HBox.hgrow="ALWAYS" />

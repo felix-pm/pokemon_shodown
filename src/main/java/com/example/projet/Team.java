@@ -1,15 +1,21 @@
 package com.example.projet;
 
 import com.example.projet.Instanciation.AllPokemons;
+import java.util.ArrayList;
 
 public class Team {
     private AllPokemons allPokemons;
     private Pokemon[] pokemonTeam;
-    private int pokemonAlive;
+    private ArrayList<Item> inventory;
     public Team(AllPokemons pokemons){
         this.allPokemons = pokemons;
         this.pokemonTeam = new Pokemon[6];
-        this.pokemonAlive = pokemonTeam.length;
+        this.inventory = new ArrayList<>();
+        this.inventory.add(new Potion(50));
+        this.inventory.add(new Potion(50));
+        this.inventory.add(new Antidote());
+        this.inventory.add(new Rappel());
+        this.inventory.add(new TotalSoin());
     }
 
     public void addInTeam(Pokemon pokemon){
@@ -24,19 +30,16 @@ public class Team {
     }
 
     public boolean teamAlive(){
-        if(pokemonAlive > 0){
-            return true;
-        } else {
+        int numberPokemon = this.getSize();
+        for(int i = 0; i < this.getSize(); i++){
+            if(this.getPokemonTeam()[i].getIsAlive() == false){
+                numberPokemon -= 1;
+            }
+        }
+        if(numberPokemon == 0){
             return false;
         }
-    }
-
-    public int getPokemonAlive() {
-        return pokemonAlive;
-    }
-
-    public void setPokemonAlive(int pokemonAlive) {
-        this.pokemonAlive = pokemonAlive;
+        return true;
     }
 
     public Pokemon[] getPokemonTeam() {
@@ -66,4 +69,20 @@ public class Team {
         }
         return count;
     }
+
+    public Pokemon getFirstAlive(){
+        for(int i = 0; i < this.getSize(); i++){
+            if(this.getPokemonTeam()[i] != null &&
+                    this.getPokemonTeam()[i].getIsAlive() &&
+                    this.getPokemonTeam()[i].getHp() > 0){
+                return this.getPokemonTeam()[i];
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
 }

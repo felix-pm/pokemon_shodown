@@ -1,25 +1,25 @@
 package com.example.projet;
 
 public class Burn extends Effects {
-    private String nomStatut;
     public Burn(int chanceActivation) {
         super(chanceActivation);
-        this.nomStatut = "Burn";
+        this.setName("Burn");
     }
 
     @Override
-    // Function that check if the pokemon was affect by a statut or apply it and decrease his hp
     public void applyEffect(Pokemon attacker, Pokemon target, int amountDamage) {
-
-        if(target.getStatut() != null){
-            int newHp = target.getHp() - target.getHp()/16;
-            target.setHp(newHp);
-        } else {
+        if(target.getStatut() == null){
             target.setStatut(this);
-            int newHp = (int) (target.getHp() - target.getHp()/16);
-            target.setHp(newHp);
-            System.out.println("Le pokemon est maintenant brulé !");
+            System.out.println("Le " + target.getName() + " est maintenant brulé !");
         }
+    }
+
+    @Override
+    public String applyEndOfTurn(Pokemon target) {
+        int damage = target.getHp() / 16;
+        if(damage < 1) damage = 1;
+        target.setHp(target.getHp() - damage);
+        return target.getName() + " souffre de sa brûlure et perd " + damage + " PV.";
     }
 
 }

@@ -21,4 +21,13 @@ public abstract class Effects {
     }
 
     public abstract void applyEffect(Pokemon attacker, Pokemon cible, int amountDamage);
+    public abstract String applyEndOfTurn(Pokemon target);
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
